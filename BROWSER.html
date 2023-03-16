@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Browser</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: white;
+        box-shadow: 0px 1px 10px #999;
+      }
+      #logo {
+        height: 30px;
+        width: auto;
+      }
+      #elgoog {
+        font-size: 22px;
+        font-weight: bold;
+        color: #4285F4;
+        text-shadow: 1px 1px #eee;
+      }
+      #address-bar {
+        flex: 1;
+        margin-left: 20px;
+        padding: 10px;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        background-color: #f2f2f2;
+        box-shadow: inset 0px 0px 5px #aaa;
+      }
+      #nav-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 20px;
+      }
+      #nav-buttons button {
+        margin-left: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 30px;
+        background-color: #f2f2f2;
+        box-shadow: 0px 1px 5px #999;
+        color: #666;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #nav-buttons button:hover {
+        background-color: #ddd;
+      }
+      #website-frame {
+        width: 100%;
+        height: calc(100vh - 80px);
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span id="elgoog">elgoog</span>
+      <input type="text" id="address-bar" placeholder="Search elgoog or type a URL">
+      <div id="nav-buttons">
+        <button onclick="history.back();">◀</button>
+        <button onclick="history.forward();">▶</button>
+        <button onclick="location.reload();">↻</button>
+
+      </div>
+    </header>
+    <iframe id="website-frame" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>
+    
+    <script>
+      function loadWebsite() {
+        var url = document.getElementById("address-bar").value;
+        document.getElementById("website-frame").src = url;
+      }
+      
+      document.getElementById("address-bar").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          loadWebsite();
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
